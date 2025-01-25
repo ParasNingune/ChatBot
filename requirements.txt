@@ -1,1 +1,4 @@
 pymongo
+flask
+google-generativeai
+python-dotenv
