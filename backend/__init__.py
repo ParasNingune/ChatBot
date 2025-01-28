@@ -1,9 +1,10 @@
 import os
 from dotenv import load_dotenv
 import warnings
-from flask import Flask
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 from pymongo import MongoClient
+from faq_handler import get_faq_answer
 
 warnings.filterwarnings("ignore")
 
@@ -20,5 +21,15 @@ def create_app():
     @app.route('/')
     def home():
         return "Chatbot Backend is running..."
+    
+    @app.route('/chat', methods=['POST'])
+    def chat():
+        data = request.get_json()
+        user_message = data.get("message", "")
+        
+        # Get the response from the FAQ handler
+        answer = get_faq_answer(user_message)
+    
+        return jsonify({"answer": answer})
     
     return app
