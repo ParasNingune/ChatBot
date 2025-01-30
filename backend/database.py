@@ -1,3 +1,7 @@
+"""
+    Contains code for connecting, retriving and closing the connection with the database
+"""
+
 import os
 from pymongo import MongoClient
 from dotenv import load_dotenv

@@ -1,3 +1,7 @@
+"""
+    Contains code for all possible routes
+"""
+
 from flask import Flask, request, jsonify
 from faq_handler import get_faq_answer
 
